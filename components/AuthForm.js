@@ -26,6 +26,9 @@ export default function AuthForm() {
                 const { error } = await supabase.auth.signUp({
                     email,
                     password,
+                    options: {
+                        emailRedirectTo: `${window.location.origin}`,
+                    },
                 });
                 if (error) throw error;
                 setMessage('¡Registro exitoso! Revisa tu email para confirmar (o inicia sesión si no requires confirmación).');
